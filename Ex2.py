@@ -1,13 +1,4 @@
 import textwrap
-balance = 0
-limit = 500
-extract = ""
-num_withdraw = 0
-LIMIT_WITHDRAW = 3
-users = []
-accounts =[]
-AGENCY = "0001"
-
 
 def menu():
     menu = """
@@ -15,9 +6,9 @@ def menu():
     [1]-Deposit
     [2]-Withdraw
     [3]-Extract
-    [4]-New Account
-    [5]-Account List
-    [6]-New User
+    [4]-New User
+    [5]-New Account
+    [6]-Account List
     [7]-Quit
     ------------------------------------
     Choice one option:
@@ -93,38 +84,50 @@ def accounts_list(accounts):
         print('=' *50)
         print(textwrap.dedent(info))
 
-while True:
-    option = menu()
+def main():
+    balance = 0
+    limit = 500
+    extract = ""
+    num_withdraw = 0
+    LIMIT_WITHDRAW = 3
+    users = []
+    accounts = []
+    AGENCY = "0001"
+    while True:
+        option = menu()
 
-    match option:
-        case '1':
-            value = float(input("Enter the deposit amount: "))
-            balance , extract = deposit_func(balance,value,extract)
+        match option:
+            case '1':
+                value = float(input("Enter the deposit amount: "))
+                balance , extract = deposit_func(balance,value,extract)
 
-        case '2':
-            if num_withdraw != LIMIT_WITHDRAW:
-                balance , extract = withdraw_func(balance=balance,extract = extract,limit=limit,num_withdraw=num_withdraw)
-            else:
-                print("Operation failed! Withdrawal limit reached.")
+            case '2':
+                if num_withdraw != LIMIT_WITHDRAW:
+                    balance , extract = withdraw_func(balance=balance,extract = extract,limit=limit,num_withdraw=num_withdraw)
+                else:
+                    print("Operation failed! Withdrawal limit reached.")
 
-        case "3":
-            extract_func(balance, extract= extract)
+            case "3":
+                extract_func(balance, extract= extract)
 
-        case "4":
-            number_account = len(accounts) + 1
-            account = create_account(AGENCY, number_account, users)
+            case "4":
+                create_user(users)
 
-            if account:
-                accounts.append(account)
+            case "5":
+                number_account = len(accounts) + 1
+                account = create_account(AGENCY, number_account, users)
 
-        case "5":
-            accounts_list(accounts)
+                if account:
+                    accounts.append(account)
 
-        case "6":
-            create_user(users)
+            case "6":
+                accounts_list(accounts)
 
-        case "7":
-            break
+            case "7":
+                break
 
-        case _:
-            print("Invalid operation, please select the desired operation again.")
+            case _:
+                print("Invalid operation, please select the desired operation again.")
+
+if __name__ == '__main__':
+    main()

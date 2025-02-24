@@ -42,7 +42,7 @@ while True:
 
     elif opcao.upper() == "E":
         print("\n================ EXTRACT ================")
-        print("No movements were made." if not extrato else extrato)
+        print("No movements were made." if not extract else extract)
         print(f"\nBalance: $ {saldo:.2f}")
         print("==========================================")
 

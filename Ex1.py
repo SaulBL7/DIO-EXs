@@ -16,37 +16,37 @@ LIMIT_WITHDRAW = 3
 while True:
     print(menu)
     option = input('Choice one option: ')
-    if opcao.upper() == "D":
-        valor = float(input("Enter the deposit amount: "))
-        if valor > 0:
-            balance += valor
-            extract += f"Deposit of  {valor:.2f}\n"
+    if option.upper() == "D":
+        value = float(input("Enter the deposit amount: "))
+        if value > 0:
+            balance += value
+            extract += f"Deposit of  {value:.2f}\n"
         else:
             print("Operation failed! The value entered is invalid.")
 
     elif option.upper() == "W":
         if num_withdraw != LIMIT_WITHDRAW:
-            valor = float(input("Enter the withdrawal amount: "))
-            if balance < valor:
+            value = float(input("Enter the withdrawal amount: "))
+            if balance < value:
                 print("Operation failed! You do not have enough balance.")
-            elif limit < valor:
+            elif limit < value:
                 print("Operation failed! Withdrawal amount exceeds limit.")
-            elif valor > 0:
-                balance -= valor
-                extract += f"Withdrawal of $ {valor:.2f}\n"
+            elif value > 0:
+                balance -= value
+                extract += f"Withdrawal of $ {value:.2f}\n"
                 num_withdraw += 1
             else:
                 print("Operation failed! The value entered is invalid.")
         else:
             print("Operation failed! Withdrawal limit reached.")
 
-    elif opcao.upper() == "E":
+    elif option.upper() == "E":
         print("\n================ EXTRACT ================")
         print("No movements were made." if not extract else extract)
-        print(f"\nBalance: $ {saldo:.2f}")
+        print(f"\nBalance: $ {balance:.2f}")
         print("==========================================")
 
-    elif opcao.upper() == "Q":
+    elif option == "Q":
         break
 
     else:

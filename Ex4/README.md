@@ -1,7 +1,7 @@
 # image_processing
 
 Description. 
-The package processamento_imagem is used to:
+The package image_processing is used to:
 	Processing:
 		- Histogram matching
 		- Structural similarity
